@@ -1,6 +1,6 @@
 <script>
   import { onMount } from 'svelte';
-  import logoUrl from '../../../static/images/removebg.png';
+  import logoUrl from '/removebg.png';
   import { tweened } from 'svelte/motion';
   import { cubicOut } from 'svelte/easing';
   let show = true;

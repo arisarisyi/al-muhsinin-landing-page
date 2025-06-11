@@ -13,7 +13,7 @@
   <div class="container">
     <div class="header-inner">
       <div class="logo">
-        <img src='./static/images/al-muhsinin.png' alt="Logo Al-Muhsinin" />
+        <img src='/al-muhsinin.png' alt="Logo Al-Muhsinin" />
         <span>Al-Muhsinin</span>
       </div>
       

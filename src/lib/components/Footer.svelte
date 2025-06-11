@@ -22,7 +22,7 @@
     <div class="footer-content">
       <div class="footer-about">
         <div class="logo">
-          <img src="./static/images/removebg.png" alt="Logo Al-Muhsinin" />
+          <img src="/removebg.png" alt="Logo Al-Muhsinin" />
           <span>Al-Muhsinin</span>
         </div>
         <p>Pondok Pesantren Kreatif Al-Muhsinin adalah pesantren modern untuk mahasiswa putra dan putri yang berlokasi di Cukir, Diwek, Jombang.</p>
