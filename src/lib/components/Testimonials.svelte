@@ -13,13 +13,13 @@ import {testimonials} from '../data/testimonials.js';
 </script>
 
 <section id="testimonials" class="testimonials">
-  <div class="container">
+  <div class="container fade-in">
     <div class="section-title">
       <h2>Apa Kata Alumni?</h2>
     </div>
     
     <div class="testimonial-slider">
-      <button on:click={prevTestimonial} class="slider-arrow">
+      <button aria-label="prev" on:click={prevTestimonial} class="slider-arrow">
         <i class="fas fa-chevron-left"></i>
       </button>
       
@@ -40,7 +40,7 @@ import {testimonials} from '../data/testimonials.js';
         </div>
       </div>
       
-      <button on:click={nextTestimonial} class="slider-arrow">
+      <button aria-label="right" on:click={nextTestimonial} class="slider-arrow">
         <i class="fas fa-chevron-right"></i>
       </button>
     </div>
@@ -161,6 +161,21 @@ import {testimonials} from '../data/testimonials.js';
     background-color: var(--primary);
     transform: scale(1.2);
   }
+
+  /* Animasi Fade-In */
+.fade-in {
+  opacity: 0; /* Mulai dengan opacity 0 (tidak terlihat) */
+  animation: fadeIn 1s ease-out forwards;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0; /* Awal: opacity 0 */
+  }
+  100% {
+    opacity: 1; /* Akhir: opacity 1 */
+  }
+}
   
   @media (max-width: 992px) {
     .testimonial-content {

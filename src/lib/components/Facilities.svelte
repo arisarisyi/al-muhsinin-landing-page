@@ -20,7 +20,7 @@
     
     <div class="facilities-slider">
       <div class="slider-controls">
-        <button on:click={prevFacility} class="slider-arrow">
+        <button aria-label="left" on:click={prevFacility} class="slider-arrow">
           <i class="fas fa-chevron-left"></i>
         </button>
       </div>
@@ -42,7 +42,7 @@
       </div>
       
       <div class="slider-controls">
-        <button on:click={nextFacility} class="slider-arrow">
+        <button aria-label="next" on:click={nextFacility} class="slider-arrow">
           <i class="fas fa-chevron-right"></i>
         </button>
       </div>

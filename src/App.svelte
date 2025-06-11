@@ -10,6 +10,7 @@
   import { onMount, onDestroy } from 'svelte';
   import About from './lib/components/About.svelte'
 
+
 const sections = ['home','about', 'activities', 'facilities', 'testimonials', 'contact'];
   
   let activeSection = 'home';

@@ -36,7 +36,7 @@
 </script>
 
 <section id="home" class="hero">
-  <div class="container">
+  <div class="container fade-in">
     <div class="hero-content">
       <div class="hero-text">
         <h1>Pondok Pesantren Kreatif <span>Al-Muhsinin</span></h1>
@@ -115,6 +115,21 @@
   .cursor {
     animation: blink 1s infinite;
   }
+
+  /* Animasi Fade-In */
+.fade-in {
+  opacity: 0; /* Mulai dengan opacity 0 (tidak terlihat) */
+  animation: fadeIn 1s ease-out forwards;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0; /* Awal: opacity 0 */
+  }
+  100% {
+    opacity: 1; /* Akhir: opacity 1 */
+  }
+}
   
   @keyframes blink {
     0%, 100% { opacity: 1; }

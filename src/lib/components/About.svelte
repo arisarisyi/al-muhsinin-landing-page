@@ -45,7 +45,7 @@
 }
 
 .hero-image img {
-  max-width: 50%;
+  max-width: 100%;
   border-radius: 10px;
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
 }
@@ -66,30 +66,10 @@ h1 {
   margin-bottom: 30px;
 }
 
-.typing-text {
-  font-size: 1.2rem;
-  margin-bottom: 30px;
-  min-height: 2rem;
-}
-
-.typing-text span:first-child {
-  color: var(--primary);
-  font-weight: 500;
-}
-
-.cursor {
-  animation: blink 1s infinite;
-}
 
 @keyframes blink {
   0%, 100% { opacity: 1; }
   50% { opacity: 0; }
-}
-
-.hero-buttons {
-  display: flex;
-  gap: 20px;
-  margin-top: 40px;
 }
 
 @media (max-width: 992px) {
@@ -123,9 +103,6 @@ h1 {
     margin-bottom: 20px; /* Jarak yang lebih pendek */
   }
 
-  .hero-buttons {
-    justify-content: center;
-  }
 }
 
 @media (max-width: 576px) {
@@ -133,10 +110,5 @@ h1 {
     font-size: 2rem; /* Ukuran lebih kecil di mobile */
   }
 
-  .hero-buttons {
-    flex-direction: column;
-    align-items: center;
-    gap: 10px; /* Jarak lebih kecil di mobile */
-  }
 }
 </style>

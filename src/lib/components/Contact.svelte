@@ -117,29 +117,6 @@
     text-align: center;
   }
   
-  .social-links {
-    display: flex;
-    gap: 15px;
-    margin: 30px 0;
-  }
-  
-  .social-links a {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    background-color: var(--primary);
-    color: white;
-    display: contents;
-    align-items: center;
-    justify-content: center;
-    text-decoration: none;
-    transition: all 0.3s ease;
-  }
-  
-  .social-links a:hover {
-    background-color: var(--primary-dark);
-    transform: translateY(-3px);
-  }
   
   .map-container {
     margin-top: 30px;
@@ -148,67 +125,11 @@
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
   }
   
-  form {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-  }
-  
-  .form-row {
-    display: flex;
-    gap: 20px;
-  }
-  
-  .form-group {
-    flex: 1;
-  }
-  
-  input, select, textarea {
-    width: 100%;
-    padding: 15px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    font-family: 'Poppins', sans-serif;
-    font-size: 1rem;
-    transition: all 0.3s ease;
-  }
-  
-  input:focus, select:focus, textarea:focus {
-    outline: none;
-    border-color: var(--primary);
-    box-shadow: 0 0 0 3px rgba(5, 163, 35, 0.2);
-  }
-  
-  select {
-    appearance: none;
-    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
-    background-repeat: no-repeat;
-    background-position: right 15px center;
-    background-size: 1em;
-  }
-  
-  .success-message {
-    background-color: rgba(5, 163, 35, 0.1);
-    padding: 20px;
-    border-radius: 5px;
-    text-align: center;
-    color: var(--primary);
-  }
-  
-  .success-message i {
-    font-size: 3rem;
-    margin-bottom: 15px;
-    display: block;
-  }
   
   @media (max-width: 992px) {
     .contact-content {
       flex-direction: column;
     }
-    
-    .form-row {
-      flex-direction: column;
-      gap: 20px;
-    }
+  
   }
 </style>
