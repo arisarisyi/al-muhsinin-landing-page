@@ -1,12 +1,12 @@
-<script>
+<script lang="ts">
  import { documentation } from '../data/documentation';
-  
+
   let activeFacility = 0;
-  
+
   const nextFacility = () => {
     activeFacility = (activeFacility + 1) % documentation.length;
   };
-  
+
   const prevFacility = () => {
     activeFacility = (activeFacility - 1 + documentation.length) % documentation.length;
   };
@@ -15,177 +15,313 @@
 <section id="facilities" class="facilities">
   <div class="container">
     <div class="section-title">
-      <h2>Dokumentasi Kegiatan Pesantren</h2>
+      <h2>Dokumentasi Kegiatan</h2>
+      <p>Momen-momen berharga dalam perjalanan Pondok Pesantren Al-Muhsinin</p>
     </div>
-    
-    <div class="facilities-slider">
-      <div class="slider-controls">
-        <button aria-label="left" on:click={prevFacility} class="slider-arrow">
-          <i class="fas fa-chevron-left"></i>
-        </button>
-      </div>
-      
-      <div class="slider-content">
-        <div class="facility-info">
-          <h3>{documentation[activeFacility].title}</h3>
-          <p>{documentation[activeFacility].description}</p>
-          <div class="facility-dots">
-            {#each documentation as _, i}
-              <span class:active={i === activeFacility} on:click={() => activeFacility = i}></span>
-            {/each}
+
+    <div class="facilities-wrapper">
+      <button
+        class="slider-nav nav-prev"
+        on:click={prevFacility}
+        aria-label="Previous documentation"
+      >
+        <i class="fas fa-chevron-left"></i>
+      </button>
+
+      <div class="slider-container">
+        {#each documentation as doc, index}
+          <div class="slide" class:active={index === activeFacility}>
+            <div class="slide-content">
+              <div class="slide-image">
+                <div class="image-wrapper">
+                  <img src={doc.image} alt={doc.title} />
+                  <div class="image-overlay"></div>
+                </div>
+              </div>
+
+              <div class="slide-info">
+                <div class="info-badge">
+                  <i class="fas fa-camera"></i>
+                  <span>Dokumentasi</span>
+                </div>
+                <h3>{doc.title}</h3>
+                <p>{doc.description}</p>
+              </div>
+            </div>
           </div>
-        </div>
-        
-        <div class="facility-image">
-          <img src={documentation[activeFacility].image} alt={documentation[activeFacility].title} />
-        </div>
+        {/each}
       </div>
-      
-      <div class="slider-controls">
-        <button aria-label="next" on:click={nextFacility} class="slider-arrow">
-          <i class="fas fa-chevron-right"></i>
-        </button>
-      </div>
+
+      <button
+        class="slider-nav nav-next"
+        on:click={nextFacility}
+        aria-label="Next documentation"
+      >
+        <i class="fas fa-chevron-right"></i>
+      </button>
+    </div>
+
+    <div class="slider-dots">
+      {#each documentation as _, i}
+        <button
+          class="dot"
+          class:active={i === activeFacility}
+          on:click={() => activeFacility = i}
+          aria-label="Go to slide {i + 1}"
+        ></button>
+      {/each}
     </div>
   </div>
 </section>
 
 <style>
   .facilities {
-    background-color: var(--light);
-  }
-  
-  .facilities-slider {
-    display: flex;
-    align-items: center;
-    gap: 30px;
-  }
-  
-  .slider-content {
-    flex: 1;
-    display: flex;
-    align-items: center;
-    gap: 50px;
-  }
-  
-  .facility-info {
-    flex: 1;
-  }
-  
-  .facility-info h3 {
-    font-size: 2rem;
-    margin-bottom: 20px;
-    color: var(--primary);
-  }
-  
-  .facility-info p {
-    font-size: 1.1rem;
-    margin-bottom: 30px;
-    color: var(--gray);
-  }
-  
-  .facility-image {
-    flex: 1;
-    border-radius: 10px;
+    background: var(--gray-50);
+    position: relative;
     overflow: hidden;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
   }
-  
-  .facility-image img {
-    width: 100%;
-    height: auto;
-    display: block;
-    transition: transform 0.5s ease;
-  }
-  
-  .slider-arrow {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    background-color: white;
-    border: none;
-    color: var(--primary);
-    font-size: 1.2rem;
-    cursor: pointer;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-    transition: all 0.3s ease;
-  }
-  
-  .slider-arrow:hover {
-    background-color: var(--primary);
-    color: white;
-  }
-  
-  .facility-dots {
+
+  .facilities-wrapper {
     display: flex;
-    gap: 10px;
+    align-items: center;
+    gap: var(--space-6);
+    position: relative;
   }
-  
-  .facility-dots span {
+
+  .slider-nav {
+    flex-shrink: 0;
+    width: 56px;
+    height: 56px;
+    border-radius: var(--radius-full);
+    background: var(--white);
+    border: 2px solid var(--gray-200);
+    color: var(--gray-700);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all var(--transition-normal);
+    z-index: 2;
+  }
+
+  .slider-nav:hover {
+    background: var(--primary);
+    border-color: var(--primary);
+    color: var(--white);
+    transform: scale(1.1);
+    box-shadow: var(--shadow-primary);
+  }
+
+  .slider-nav:active {
+    transform: scale(1.05);
+  }
+
+  .slider-container {
+    flex: 1;
+    position: relative;
+    overflow: hidden;
+    border-radius: var(--radius-2xl);
+    height: 400px;
+  }
+
+  .slide {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    transform: translateX(100%);
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    pointer-events: none;
+    height: 100%;
+  }
+
+  .slide.active {
+    opacity: 1;
+    transform: translateX(0);
+    pointer-events: auto;
+  }
+
+  .slide-content {
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: 0;
+    background: var(--white);
+    border-radius: var(--radius-2xl);
+    overflow: hidden;
+    box-shadow: var(--shadow-xl);
+    height: 100%;
+  }
+
+  .slide-image {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .image-wrapper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+  }
+
+  .image-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform var(--transition-slow);
+  }
+
+  .slide.active .image-wrapper img {
+    transform: scale(1.05);
+  }
+
+  .image-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to right, transparent 50%, rgba(0, 0, 0, 0.1));
+  }
+
+  .slide-info {
+    padding: var(--space-10);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .info-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    padding: var(--space-2) var(--space-4);
+    background: linear-gradient(135deg, rgba(13, 148, 136, 0.1), rgba(13, 148, 136, 0.05));
+    border: 1px solid rgba(13, 148, 136, 0.2);
+    border-radius: var(--radius-full);
+    color: var(--primary);
+    font-size: var(--text-sm);
+    font-weight: 600;
+    width: fit-content;
+    margin-bottom: var(--space-6);
+  }
+
+  .slide-info h3 {
+    font-size: var(--text-3xl);
+    color: var(--gray-900);
+    margin-bottom: var(--space-4);
+    line-height: 1.3;
+  }
+
+  .slide-info p {
+    font-size: var(--text-lg);
+    color: var(--gray-600);
+    line-height: 1.7;
+  }
+
+  .slider-dots {
+    display: flex;
+    justify-content: center;
+    gap: var(--space-3);
+    margin-top: var(--space-8);
+  }
+
+  .dot {
     width: 12px;
     height: 12px;
-    border-radius: 50%;
-    background-color: #ddd;
+    border-radius: var(--radius-full);
+    background: var(--gray-300);
+    border: none;
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: all var(--transition-normal);
   }
-  
-  .facility-dots span.active {
-    background-color: var(--primary);
+
+  .dot:hover {
+    background: var(--primary);
     transform: scale(1.2);
   }
-  
-  @media (max-width: 992px) {
-    .slider-content {
-      flex-direction: column;
+
+  .dot.active {
+    background: var(--primary);
+    width: 32px;
+    border-radius: var(--radius-full);
+  }
+
+  @media (max-width: 1024px) {
+    .slider-container {
+      height: 500px;
     }
-    
-    .facility-info {
-      order: 2;
-      text-align: center;
+
+    .slide-content {
+      grid-template-columns: 1fr;
+      grid-template-rows: 300px 1fr;
     }
-    
-    .facility-image {
-      order: 1;
+
+    .image-overlay {
+      background: linear-gradient(to bottom, transparent 50%, rgba(0, 0, 0, 0.1));
     }
-    
-    .facility-dots {
-      justify-content: center;
+
+    .slide-info {
+      padding: var(--space-8);
     }
   }
 
   @media (max-width: 768px) {
-  .facilities-slider {
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
+    .facilities-wrapper {
+      flex-direction: column;
+    }
+
+    .slider-nav {
+      width: 48px;
+      height: 48px;
+    }
+
+    .nav-prev {
+      order: 2;
+    }
+
+    .nav-next {
+      order: 3;
+    }
+
+    .slider-container {
+      order: 1;
+      width: 100%;
+      height: 450px;
+    }
+
+    .slide-content {
+      grid-template-rows: 250px 1fr;
+    }
+
+    .slide-info {
+      padding: var(--space-6);
+    }
+
+    .slide-info h3 {
+      font-size: var(--text-2xl);
+    }
+
+    .slide-info p {
+      font-size: var(--text-base);
+    }
+
+    .slider-dots {
+      order: 4;
+      margin-top: var(--space-6);
+    }
   }
 
-  .slider-content {
-    flex-direction: column;
-    align-items: center;
-  }
+  @media (max-width: 640px) {
+    .slider-container {
+      height: 400px;
+    }
 
-  .facility-info,
-  .facility-image {
-    width: 100%;
-  }
+    .slide-content {
+      grid-template-rows: 200px 1fr;
+    }
 
-  .facility-dots {
-    margin-top: 20px;
-    justify-content: center;
-  }
+    .slide-info h3 {
+      font-size: var(--text-xl);
+    }
 
-  .slider-controls {
-    margin: 10px 0;
-    display: flex;
-    justify-content: center;
-  }
-}
-  
-  @media (max-width: 576px) {
-    .facility-info h3 {
-      font-size: 1.5rem;
+    .slide-info p {
+      font-size: var(--text-sm);
     }
   }
 </style>

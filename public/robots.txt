@@ -1,0 +1,8 @@
+# robots.txt untuk Pondok Pesantren Kreatif Al-Muhsinin
+# https://al-muhsinin.com
+
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://al-muhsinin.com/sitemap.xml
