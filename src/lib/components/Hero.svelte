@@ -83,13 +83,13 @@
           </div>
           <div class="stat-divider"></div>
           <div class="stat-item">
-            <div class="stat-number">100+</div>
+            <div class="stat-number">40+</div>
             <div class="stat-label">Santri Aktif</div>
           </div>
           <div class="stat-divider"></div>
           <div class="stat-item">
-            <div class="stat-number">5+</div>
-            <div class="stat-label">Program Unggulan</div>
+            <div class="stat-number">200+</div>
+            <div class="stat-label">Alumni</div>
           </div>
         </div>
       </div>
